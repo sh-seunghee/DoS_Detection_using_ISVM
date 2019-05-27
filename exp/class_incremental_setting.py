@@ -116,13 +116,23 @@ class4 = pd.concat(list_of_class4)
 list_of_class5 = [class_benign[50000:60000], class_dos_slowloris]
 class5 = pd.concat(list_of_class5)
 
+
+'''
+Input C and gamma
+'''
+c = input("Enter C value: ")
+print ("C = "+str(c))
+gamma = input("Enter gamma value: ")
+print ("gamma = "+str(gamma))
+
+
 '''
 
 # 1. Standard SVM
 
 '''
 
-svclassifier = SVC(kernel='rbf', class_weight='balanced', C=1000.0, gamma=0.1, decision_function_shape='ovr')
+svclassifier = SVC(kernel='rbf', class_weight='balanced', C=c, gamma=gamma, decision_function_shape='ovr')
 
 # Initialize values
 t_phase = 0
@@ -236,7 +246,7 @@ while True:
 
 '''
 
-svclassifier = SVC(kernel='rbf', class_weight='balanced', C=1000000.0, gamma=0.1, decision_function_shape='ovr')
+svclassifier = SVC(kernel='rbf', class_weight='balanced', C=c, gamma=gamma, decision_function_shape='ovr')
 
 # Initialize values
 t_phase = 0
@@ -364,7 +374,7 @@ while True:
 
 '''
 
-svclassifier = SVC(kernel='rbf', class_weight='balanced', C=1000000.0, gamma=0.1, decision_function_shape='ovr')
+svclassifier = SVC(kernel='rbf', class_weight='balanced', C=c, gamma=gamma, decision_function_shape='ovr')
 
 # Initialize values
 t_phase = 0

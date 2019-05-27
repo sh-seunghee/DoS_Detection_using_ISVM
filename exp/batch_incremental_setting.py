@@ -67,14 +67,27 @@ print(np.asarray((unique_elelments, count_elements)))
 
 
 '''
+Input C and gamma
+'''
+c = input("Enter C value: ")
+print ("C = "+str(c))
+gamma = input("Enter gamma value: ")
+print ("gamma = "+str(gamma))
+
+# type conversion
+c = int(c)
+gamma = float(gamma)
+
+
+'''
 
 # 1. Standard SVM
 
 '''
 
-print ("*** First model: Standard SVM")
+print ("\n\n*** First model: Standard SVM")
 
-svclassifier = SVC(kernel='rbf', class_weight='balanced', C=1000.0, gamma=0.1, decision_function_shape='ovr')
+svclassifier = SVC(kernel='rbf', class_weight='balanced', C=c, gamma=gamma, decision_function_shape='ovr')
 
 start = time.time()
 svclassifier.fit(x_train, y_train)
@@ -101,7 +114,7 @@ print("Number of Support vectors got in this phase: " + str(len(svclassifier.sup
 
 print ("*** Second model: Simple ISVM")
 
-svclassifier = SVC(kernel='rbf', class_weight='balanced', C=1000000.0, gamma=0.1, decision_function_shape='ovr')
+svclassifier = SVC(kernel='rbf', class_weight='balanced', C=c, gamma=gamma, decision_function_shape='ovr')
 
 
 t_phase = 0
@@ -192,7 +205,7 @@ while True:
 
 print ("*** Third model: KNN-ISVM")
 
-svclassifier = SVC(kernel='rbf', class_weight='balanced', C=1000.0, gamma=0.1, decision_function_shape='ovr')
+svclassifier = SVC(kernel='rbf', class_weight='balanced', C=c, gamma=gamma, decision_function_shape='ovr')
 
 t_phase = 0
 _end = 0
@@ -288,7 +301,7 @@ while True:
         # get the probability of the actual label
         prob = proba_array[idx][loc]
 
-        if prob < 0.5:
+        if prob < 0.5:  # put threshold value here
 
             list_of_idx.append(idx)
 
